@@ -11,6 +11,12 @@
   </thead>
 
   <tbody>
+
+<h1>Create Nueva Empresa:</h1>
+<%= render 'form', company: @new_company %>
+
+
+
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.name %></td>
