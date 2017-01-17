@@ -25,7 +25,6 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
-
     respond_to do |format|
       if @claim.save
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
