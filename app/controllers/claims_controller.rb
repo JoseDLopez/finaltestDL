@@ -25,9 +25,11 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
+    @claim.user = current_user
+    @company = Company.find(params[:company_id])
     respond_to do |format|
       if @claim.save
-        format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
+        format.html { redirect_to @company, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else
         format.html { render :new }

@@ -5,7 +5,9 @@
   <%= @company.name %>
 </p>
 
-<%= link_to 'Agregar Claim', new_company_claim_path(@company) %> |
+<h2>Creación de quejas:</h2>
+<%= render :partial => 'claims/form', :object => Claim.new %>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
