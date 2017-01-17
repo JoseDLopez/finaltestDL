@@ -11,3 +11,20 @@
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
+
+
+<table id="">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody id="">
+    <% @users.each do |u| %>
+      <% u.claims.each do |c| %>
+      	<p><%= c.title %></p>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
