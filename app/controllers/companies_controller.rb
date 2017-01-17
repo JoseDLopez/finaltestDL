@@ -24,15 +24,17 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
-
-    respond_to do |format|
-      if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.json { render :show, status: :created, location: @company }
-      else
-        format.html { render :new }
-        format.json { render json: @company.errors, status: :unprocessable_entity }
+    if current_user.company == nil
+      @company = Company.new(company_params)
+      @company.users << current_user
+      respond_to do |format|
+        if @company.save
+          format.html { redirect_to @company, notice: 'Company was successfully created.' }
+          format.json { render :show, status: :created, location: @company }
+        else
+          format.html { render :new }
+          format.json { render json: @company.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

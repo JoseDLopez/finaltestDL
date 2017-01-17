@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  belongs_to :companies, optional: true
+  belongs_to :company, optional: true
   has_many :claims
 
   # def set_default_company
